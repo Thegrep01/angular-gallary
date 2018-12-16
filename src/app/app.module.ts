@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 
 import { GallaryComponent } from './gallary/gallary.component'
@@ -31,7 +32,8 @@ import { RouterModule } from '@angular/router';
     MatToolbarModule,
     MatGridListModule,
     MatButtonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MatCardModule
   ],
   providers: [ImageService, ImageFilterPipe],
   bootstrap: [AppComponent]

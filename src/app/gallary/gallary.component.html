@@ -7,7 +7,9 @@
   </div>
   <mat-grid-list gutterSize="10px" cols="4" rowHeight="2:1">
     <mat-grid-tile *ngFor="let image of ( imageVisible | imageFilter:filterBy )">
-      <img src="{{image.url}}" alt="#">
+      <a [routerLink]="['/image', image.id]">
+        <img src="{{image.url}}" alt="#">
+      </a>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
