@@ -1,25 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatGridListModule } from '@angular/material/grid-list';
+
+import { GallaryComponent } from './gallary/gallary.component'
+import { HeaderComponent } from './header/header.component';
+import { ImageDetailComponent } from './image-detail/image-detail.component';
+import { ImageService } from './image-detail/shared/image.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    GallaryComponent,
+    ImageDetailComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatGridListModule
   ],
-  providers: [],
+  providers: [ImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
