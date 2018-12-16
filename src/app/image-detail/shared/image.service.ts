@@ -9,7 +9,7 @@ export class ImageService {
         return this.visibleImages = IMAGES.slice(0);
     }
 
-    getImageByID(id: number) {
+    getImage(id: number) {
         return IMAGES.slice(0).find(item => item.id === id);
     }
 }

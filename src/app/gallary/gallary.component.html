@@ -1,6 +1,12 @@
 <div class="container">
+  <div class="buttons">
+    <button mat-stroked-button color="warn" [class.active]="filterBy==='all'" (click)="filterBy='all'">All</button>
+    <button mat-stroked-button color="warn" [class.active]="filterBy==='boats'" (click)="filterBy='boats'">Boats</button>
+    <button mat-stroked-button color="warn" [class.active]="filterBy==='camping'" (click)="filterBy='camping'">Camping</button>
+    <button mat-stroked-button color="warn" [class.active]="filterBy==='library'" (click)="filterBy='library'">Library</button>
+  </div>
   <mat-grid-list gutterSize="10px" cols="4" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let image of imageVisible">
+    <mat-grid-tile *ngFor="let image of ( imageVisible | imageFilter:filterBy )">
       <img src="{{image.url}}" alt="#">
     </mat-grid-tile>
   </mat-grid-list>
