@@ -1,4 +1,11 @@
-<div class="container">
-      <img src="{{image.url}}" alt="#">
-      <p>{{image.caption}}</p>
-</div>
+<md-dialog aria-label="Picture" class="dialog-picture">
+      <md-dialog-content>
+            <div>
+                  <img src="{{image.url}}" alt="#">
+                  <p>{{image.caption}}</p>
+            </div>
+      </md-dialog-content>
+      <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close>Close</button>
+      </mat-dialog-actions>
+</md-dialog>

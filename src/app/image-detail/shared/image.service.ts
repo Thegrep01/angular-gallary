@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 export class ImageService {
 
     private visibleImages = [];
+    id: number;
 
     getImages() {
         return this.visibleImages = IMAGES.slice(0);
