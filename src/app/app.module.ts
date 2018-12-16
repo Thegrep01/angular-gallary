@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 
 
 import { GallaryComponent } from './gallary/gallary.component'
@@ -14,6 +14,8 @@ import { HeaderComponent } from './header/header.component';
 import { ImageDetailComponent } from './image-detail/image-detail.component';
 import { ImageService } from './image-detail/shared/image.service';
 import { ImageFilterPipe } from './image-detail/shared/filter.pipe';
+import { routes } from '../router';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ImageFilterPipe } from './image-detail/shared/filter.pipe';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatGridListModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [ImageService, ImageFilterPipe],
   bootstrap: [AppComponent]
