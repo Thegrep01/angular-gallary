@@ -1,7 +1,8 @@
-import { Component, OnChanges, Input } from '@angular/core';
-import { ImageService } from '../image-detail/shared/image.service';
+import { Component, OnInit } from '@angular/core';
+import { ImageService } from '../shared/image.service';
 import {MatDialog} from '@angular/material';
 import { ImageDetailComponent } from '../image-detail/image-detail.component';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -9,27 +10,35 @@ import { ImageDetailComponent } from '../image-detail/image-detail.component';
   templateUrl: './gallary.component.html',
   styleUrls: ['./gallary.component.scss']
 })
-export class GallaryComponent implements OnChanges {
+export class GallaryComponent implements OnInit {
 
-  imageVisible: any[] = [];
-  image: any;
-  @Input() filterBy = 'all';
+  public images: any;
 
-  constructor(private imageService: ImageService, public dialog: MatDialog) {
-    this.imageVisible = this.imageService.getImages();
+  searchForm = new FormGroup({
+    count: new FormControl(''),
+    search: new FormControl('')
+  });
+
+  constructor(private imageService: ImageService, public dialog: MatDialog) {  }
+
+  openDialog(url: string) {
+    this.imageService.url = url;
+    this.dialog.open(ImageDetailComponent);
   }
 
-  openDialog(id: number) {
-    this.imageService.id = id;
-    const dialogRef = this.dialog.open(ImageDetailComponent);
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
+  ngOnInit() {
+    this.imageService.getImages().subscribe(value => {
+      this.images = value;
+    });
   }
 
-  ngOnChanges() {
-    this.imageVisible = this.imageService.getImages();
+  onSubmit() {
+    if (this.searchForm.value.count >= 3 ) {
+      this.imageService.getImages(this.searchForm.value.count, this.searchForm.value.search).subscribe(value => {
+        this.images = value;
+      });
+    }
   }
+
 
 }

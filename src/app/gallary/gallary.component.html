@@ -1,14 +1,17 @@
 <div class="container">
-  <div class="buttons">
-    <button mat-stroked-button color="warn" [class.active]="filterBy==='all'" (click)="filterBy='all'">All</button>
-    <button mat-stroked-button color="warn" [class.active]="filterBy==='boats'" (click)="filterBy='boats'">Boats</button>
-    <button mat-stroked-button color="warn" [class.active]="filterBy==='camping'" (click)="filterBy='camping'">Camping</button>
-    <button mat-stroked-button color="warn" [class.active]="filterBy==='library'" (click)="filterBy='library'">Library</button>
-  </div>
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Search" formControlName="search">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Amount" formControlName="count">
+    </mat-form-field>
+    <button mat-button type="submit">Ok</button>
+  </form>
   <mat-grid-list gutterSize="10px" cols="4" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let image of ( imageVisible | imageFilter:filterBy )">
-      <a (click)="openDialog(image.id)" ><!-- [routerLink]="['/image', image.id]" -->
-        <img src="{{image.url}}" alt="#">
+    <mat-grid-tile *ngFor="let image of images.hits">
+      <a (click)="openDialog(image.largeImageURL)">
+        <img src="{{image.largeImageURL}}" alt="#">
       </a>
     </mat-grid-tile>
   </mat-grid-list>
