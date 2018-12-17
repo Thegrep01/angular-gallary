@@ -6,8 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class ImageService {
 
-    public url: string;
-    // public per_page: string;
+    public image: any;
 
     private KEY = environment.API_KEY;
     private API = environment.API_URL;
@@ -22,7 +21,7 @@ export class ImageService {
     }
 
     getImage() {
-        return this.url;
+        return this.image;
     }
 }
 

@@ -12,10 +12,10 @@ export class ImageDetailComponent implements OnInit {
 
   public image: string;
 
-  constructor(private imageService: ImageService, private route: ActivatedRoute) { }
+  constructor(private imageService: ImageService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.image = this.imageService.url;
+    this.image = this.imageService.image;
   }
 
 }

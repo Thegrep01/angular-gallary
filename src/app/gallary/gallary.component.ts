@@ -21,8 +21,8 @@ export class GallaryComponent implements OnInit {
 
   constructor(private imageService: ImageService, public dialog: MatDialog) {  }
 
-  openDialog(url: string) {
-    this.imageService.url = url;
+  openDialog(image: any) {
+    this.imageService.image = image;
     this.dialog.open(ImageDetailComponent);
   }
 

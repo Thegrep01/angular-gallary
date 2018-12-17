@@ -44,7 +44,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ImageService, ImageFilterPipe],

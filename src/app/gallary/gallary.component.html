@@ -10,7 +10,7 @@
   </form>
   <mat-grid-list gutterSize="10px" cols="4" rowHeight="2:1">
     <mat-grid-tile *ngFor="let image of images.hits">
-      <a (click)="openDialog(image.largeImageURL)">
+      <a (click)="openDialog(image)">
         <img src="{{image.largeImageURL}}" alt="#">
       </a>
     </mat-grid-tile>
