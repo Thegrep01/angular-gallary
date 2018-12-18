@@ -231,8 +231,23 @@ var GallaryComponent = /** @class */ (function () {
     };
     GallaryComponent.prototype.onSubmit = function () {
         var _this = this;
-        if (this.searchForm.value.count >= 3) {
+        if (this.searchForm.value.count >= 3 && this.searchForm.value.search) {
             this.imageService.getImages(this.searchForm.value.count, this.searchForm.value.search).subscribe(function (value) {
+                _this.images = value;
+            });
+        }
+        else if (this.searchForm.value.count >= 3 && !this.searchForm.value.search) {
+            this.imageService.getImages(this.searchForm.value.count).subscribe(function (value) {
+                _this.images = value;
+            });
+        }
+        else if ((this.searchForm.value.count <= 3 || !this.searchForm.value.count) && this.searchForm.value.search) {
+            this.imageService.getImages('20', this.searchForm.value.search).subscribe(function (value) {
+                _this.images = value;
+            });
+        }
+        else {
+            this.imageService.getImages().subscribe(function (value) {
                 _this.images = value;
             });
         }
