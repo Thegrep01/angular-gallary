@@ -16,8 +16,8 @@ export class ImageService {
 
     constructor(private http: HttpClient) { }
 
-    getImages(per_page: string = '20', search: string = ''): Observable<any> {
-        return this.http.get(`${this.URL}&per_page=${per_page}&q=${search}`);
+   getImages(per_page: string = '20', search: string = ''): Observable<any> {
+        return  this.http.get(`${this.URL}&per_page=${per_page}&q=${search}`);
     }
 
     getImage() {

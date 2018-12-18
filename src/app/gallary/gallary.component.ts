@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageService } from '../shared/image.service';
-import {MatDialog} from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { ImageDetailComponent } from '../image-detail/image-detail.component';
 import { FormControl, FormGroup } from '@angular/forms';
-
 
 @Component({
   selector: 'app-gallary',
@@ -19,7 +18,7 @@ export class GallaryComponent implements OnInit {
     search: new FormControl('')
   });
 
-  constructor(private imageService: ImageService, public dialog: MatDialog) {  }
+  constructor(private imageService: ImageService, public dialog: MatDialog) { }
 
   openDialog(image: any) {
     this.imageService.image = image;
@@ -33,12 +32,22 @@ export class GallaryComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.searchForm.value.count >= 3 ) {
+    if (this.searchForm.value.count >= 3 && this.searchForm.value.search) {
       this.imageService.getImages(this.searchForm.value.count, this.searchForm.value.search).subscribe(value => {
+        this.images = value;
+      });
+    } else if (this.searchForm.value.count >= 3 && !this.searchForm.value.search) {
+      this.imageService.getImages(this.searchForm.value.count).subscribe(value => {
+        this.images = value;
+      });
+    } else if ((this.searchForm.value.count <= 3 || !this.searchForm.value.count) && this.searchForm.value.search) {
+      this.imageService.getImages('20', this.searchForm.value.search).subscribe(value => {
+        this.images = value;
+      });
+    } else {
+      this.imageService.getImages().subscribe(value => {
         this.images = value;
       });
     }
   }
-
-
 }
